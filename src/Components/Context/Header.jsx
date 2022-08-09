@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <div className='component'>
       <h1>Header</h1>
-      <h2>Hello, name!</h2>
+      <h2>Hello,!</h2>
     </div>
   );
 }

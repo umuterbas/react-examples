@@ -1,6 +1,9 @@
 import React from 'react';
+import { useContext } from 'react';
+import { UserContext } from './UserContext';
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const { user } = useContext(UserContext);
   console.log('render navbar');
   return (
     <div className='component'>
@@ -21,7 +24,7 @@ export default function Navbar() {
             backgroundColor: 'black',
             display: 'inline-block',
           }}></span>
-        email
+        {user.email}
       </div>
     </div>
   );

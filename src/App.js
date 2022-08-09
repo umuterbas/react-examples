@@ -1,16 +1,16 @@
 import './App.css';
 // import Buttons from './Components/Buttons/Buttons';
-import FifaTourney from './Components/FifaTourney/FifaTourney';
+// import FifaTourney from './Components/FifaTourney/FifaTourney';
 // import Context from './Components/Context/Context';
-// import CartExercise from './Components/CartExercise/CartExercise';
+import CartExercise from './Components/CartExercise/CartExercise';
 
 function App() {
   return (
     <div className='App'>
       {/* <Context /> */}
-      {/* <CartExercise /> */}
+      <CartExercise />
       {/* <Buttons /> */}
-      <FifaTourney />
+      {/* <FifaTourney /> */}
     </div>
   );
 }
