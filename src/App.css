@@ -42,3 +42,18 @@
   padding: 1rem;
   margin: 1rem;
 }
+
+.off{
+  background-color: black;
+  color: white;
+}
+
+.on{
+  background-color: yellow;
+}
+
+button {
+  border: none;
+  border-radius: 1rem;
+  padding: 0 .5rem;
+}
