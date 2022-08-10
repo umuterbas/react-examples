@@ -4,6 +4,7 @@ import Class from './Components/Class/Class';
 // import FifaTourney from './Components/FifaTourney/FifaTourney';
 // import Context from './Components/Context/Context';
 // import CartExercise from './Components/CartExercise/CartExercise';
+// import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       {/* <Buttons /> */}
       {/* <FifaTourney /> */}
       <Class />
+      {/* <CartClassExercise /> */}
     </div>
   );
 }
