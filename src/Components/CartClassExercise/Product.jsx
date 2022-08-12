@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CartContext } from './CartContext';
-import ButtonCart from '../../stories/ButtonCart';
+import ButtonCart from './ButtonCart';
 
 export default class Product extends Component {
   render() {
@@ -18,7 +18,10 @@ export default class Product extends Component {
         <ButtonCart
           onClick={() => this.context.addToCart(product)}
           label='Add to cart'
-          bgColor='green'></ButtonCart>
+          colors={{
+            color: 'white',
+            bgColor: 'hsl(158, 36%, 37%)',
+          }}></ButtonCart>
       </div>
     );
   }
