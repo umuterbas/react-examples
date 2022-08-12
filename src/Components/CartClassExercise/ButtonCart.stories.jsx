@@ -3,7 +3,7 @@ import React from 'react';
 import ButtonCart from './ButtonCart';
 
 export default {
-  title: 'Example/Button2',
+  title: 'CartExercise/Button',
   component: ButtonCart,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
