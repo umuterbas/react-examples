@@ -5,6 +5,7 @@ import './App.css';
 // import Context from './Components/Context/Context';
 // import CartExercise from './Components/CartExercise/CartExercise';
 import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
+import Reducer from './Components/Reducer/Reducer';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       {/* <Buttons /> */}
       {/* <FifaTourney /> */}
       {/* <Class /> */}
-      <CartClassExercise />
+      {/* <CartClassExercise /> */}
+      <Reducer />
     </div>
   );
 }
