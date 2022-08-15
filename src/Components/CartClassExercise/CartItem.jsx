@@ -7,23 +7,26 @@ export default class CartItem extends Component {
   render() {
     const { item } = this.props;
     return (
-      <div>
-        <li style={{ display: 'grid', gridTemplateColumns: '5fr 1fr 1fr' }}>
-          <div>
-            <ButtonCart
-              colors={{
-                bgColor: 'red',
-                color: 'white',
-              }}
-              label={<MdOutlineRemoveShoppingCart />}
-              onClick={() => this.context.removeItem(item.id)}
-            />
-            <span>{item.title}</span>
-          </div>
-          <span>{item.quantity}</span>
-          <span>${item.price}</span>
-        </li>
-      </div>
+      <li
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 4fr 2fr 2fr',
+          backgroundColor: 'white',
+          alignItems: 'center',
+          padding: '.5rem .3rem',
+          gap: '.5rem',
+        }}>
+        <ButtonCart
+          label=''
+          type='remove'
+          onClick={() => this.context.removeItem(item.id)}>
+          X
+        </ButtonCart>
+        <span>{item.title}</span>
+
+        <span>{item.quantity}</span>
+        <span>${item.price.toFixed(2)}</span>
+      </li>
     );
   }
 }

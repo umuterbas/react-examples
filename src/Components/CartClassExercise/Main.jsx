@@ -5,9 +5,13 @@ import CartList from './CartList';
 export default class Main extends Component {
   render() {
     return (
-      <div className='component'>
-        <h1>Main</h1>
-        <div style={{ display: 'grid', gridTemplateColumns: '3fr 1fr' }}>
+      <div>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '3fr 1fr',
+            paddingTop: '150px',
+          }}>
           <Products />
           <CartList />
         </div>

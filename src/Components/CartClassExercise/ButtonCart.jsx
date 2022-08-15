@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 const variant = {
   add: {
     icon: <MdOutlineAddShoppingCart />,
-    bgColor: 'green',
+    bgColor: 'hsl(158, 36%, 27%)',
     color: 'white',
   },
   remove: {
@@ -25,15 +25,18 @@ const variant = {
 };
 
 const StyledButton = styled.button`
+  font-family: Montserrat;
   background-color: ${({ type }) => variant[type].bgColor};
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
   color: ${({ type }) => variant[type].color};
-  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  font-weigth: 700;
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
-
+  height: fit-content;
   &:hover {
     background-color: ${({ type }) => variant[type].color};
     color: ${({ type }) => variant[type].bgColor};
