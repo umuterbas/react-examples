@@ -15,8 +15,8 @@ function App() {
       {/* <Buttons /> */}
       {/* <FifaTourney /> */}
       {/* <Class /> */}
-      {/* <CartClassExercise /> */}
-      <Reducer />
+      <CartClassExercise />
+      {/* <Reducer /> */}
     </div>
   );
 }

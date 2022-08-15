@@ -19,10 +19,13 @@ export default class Products extends Component {
       <Product product={product} key={product.id} />
     ));
     return (
-      <div className='component'>
-        <h1>Product list</h1>
+      <div>
         <section
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)' }}>
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3,1fr)',
+            gap: '1rem',
+          }}>
           {parseProductList}
         </section>
       </div>
