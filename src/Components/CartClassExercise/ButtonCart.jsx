@@ -21,6 +21,7 @@ const variant = {
   default: {
     bgColor: 'lightgray',
     color: 'white',
+    icon: '',
   },
 };
 
@@ -45,7 +46,7 @@ const StyledButton = styled.button`
 `;
 
 export default function ButtonCart(props) {
-  const { label, onClick, type } = props;
+  const { label, onClick, type = 'default' } = props;
   return (
     <StyledButton onClick={onClick} type={type}>
       {variant[type].icon}

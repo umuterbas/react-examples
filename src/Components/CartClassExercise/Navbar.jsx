@@ -21,7 +21,7 @@ export default class Navbar extends Component {
             <MdOutlineShoppingCart />
             <span>Cart</span>
           </h2>
-          <h2>{this.context.cartList.length}</h2>
+          <h2>{this.context.state.cart.length}</h2>
         </div>
       </div>
     );

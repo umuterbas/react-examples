@@ -12,7 +12,7 @@ export default class CartList extends Component {
     };
   }
   render() {
-    const parseCartList = this.context.cartList.map((item) => (
+    const parseCartList = this.context.state.cart.map((item) => (
       <CartItem item={item} key={item.id} />
     ));
     return (
@@ -45,13 +45,17 @@ export default class CartList extends Component {
                 gap: '1rem',
                 padding: '2rem 1rem',
               }}>
-              {this.context.cartList.length > 0 ? (
+              {this.context.state.cart.length > 0 ? (
                 parseCartList
               ) : (
                 <h2>No items in the cart yet.</h2>
               )}
             </ul>
             <h2>Total: ${this.context.calculateTotal().toFixed(2)}</h2>
+            <button
+              onClick={() => this.context.dispatch({ type: 'RESET_CART' })}>
+              Reset cart
+            </button>
           </div>
         )}
       </div>
