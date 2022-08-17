@@ -2,18 +2,26 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import useAxios from '../CustomHook/hooks/useAxios';
 import Product from './Product';
 
 export default function Products() {
   const [productList, setProductList] = useState([]);
+  const { data } = useAxios('https://fakestoreapi.com/products', 'get', null);
   useEffect(() => {
-    axios
-      .get('https://fakestoreapi.com/products')
-      .then((response) => setProductList(response.data));
+    console.log('data products', data);
+    setProductList(data);
   }, []);
-  const parseProductList = productList.map((product) => (
-    <Product product={product} key={product.id} />
-  ));
+  // useEffect(() => {
+  //   axios
+  //     .get('https://fakestoreapi.com/products')
+  //     .then((response) => setProductList(response.data));
+  // }, []);
+  const parseProductList = productList
+    ? productList.map((product) => (
+        <Product product={product} key={product.id} />
+      ))
+    : [];
   return (
     <div className='component'>
       <h1>Product list</h1>
