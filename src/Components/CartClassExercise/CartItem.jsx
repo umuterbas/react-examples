@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { CartContext } from './CartContext';
 import ButtonCart from './ButtonCart';
-import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
 
 export default class CartItem extends Component {
   render() {
@@ -19,7 +18,9 @@ export default class CartItem extends Component {
         <ButtonCart
           label=''
           type='remove'
-          onClick={() => this.context.removeItem(item.id)}>
+          onClick={() =>
+            this.context.dispatch({ type: 'REMOVE_ITEM', payload: item.id })
+          }>
           X
         </ButtonCart>
         <span>{item.title}</span>

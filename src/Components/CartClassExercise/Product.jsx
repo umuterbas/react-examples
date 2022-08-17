@@ -42,7 +42,9 @@ export default class Product extends Component {
           <ButtonCart
             label='Add to cart'
             type='add'
-            onClick={() => this.context.addToCart(product)}
+            onClick={() =>
+              this.context.dispatch({ type: 'ADD_TO_CART', payload: product })
+            }
           />
         </div>
       </Card>
