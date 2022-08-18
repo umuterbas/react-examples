@@ -26,12 +26,12 @@ export const todoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTodos.fulfilled, (state, action) => {
-        // Add user to the state array
+        // Add all todos to the state array
         state.list = action.payload;
         state.isLoading = false;
       })
       .addCase(fetchTodos.pending, (state, action) => {
-        // Add user to the state array
+        // Update loading status
         state.isLoading = true;
       });
   },

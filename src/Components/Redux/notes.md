@@ -153,6 +153,84 @@ TaskList<ul>
 </ul>
 ```
 
+## API Requests
+
+### Step 1: Import `createAsyncThunk` and call the method to create a new function
+
+```js
+// todoSlice.js
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import todoService from './todoService';
+
+export const fetchTodos = createAsyncThunk(
+  'todo/fetchTodos',
+  async (thunkAPI) => {
+    const response = await todoService.get();
+    return response.data;
+  }
+);
+```
+
+### Step 2: Create a service file
+
+```js
+// todoService.js
+import axios from 'axios';
+
+const todoService = {
+  // create one method for every type of request (get, post, put, delete)
+  get: async () => {
+    //get all todos
+    return await axios.get('https://jsonplaceholder.typicode.com/todos');
+  },
+};
+
+export default todoService;
+```
+
+### Step 3: Add extraReducers to your slice
+
+```js
+{
+  extraReducers: (builder) => {
+    builder
+      // add a case for every status that needs to update the state.
+      .addCase(fetchTodos.fulfilled, (state, action) => {
+        // Add all todos to the state array
+        state.list = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchTodos.pending, (state, action) => {
+        // Update loading status
+        state.isLoading = true;
+      });
+  },
+}
+```
+
+### Step 4: In your component, import the function from the slice file.
+
+```js
+//Todo.jsx
+import { add, remove, fetchTodos } from './features/todoSlice';
+```
+
+### Step 5: Call dispatch and pass the function as parameter.
+
+```js
+//Todo.jsx
+useEffect(() => {
+  dispatch(fetchTodos());
+}, [dispatch]);
+```
+
+### Step 5: Call useSelector to access the state values.
+
+```js
+//Todo.jsx
+const { list, isLoading } = useSelector((state) => state.todo);
+```
+
 ## Exercise 2
 
 Create a Post blog using Redux.
