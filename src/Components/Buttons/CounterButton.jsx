@@ -5,16 +5,10 @@ export default function CounterButton() {
 
   const handleClick = () => {
     setCounter((previousState) => {
-      // console.log('previousState', previousState);
+     
       return previousState + 1;
     });
-    // setCounter((previousState)=> {
-    //     console.log('previousState', previousState);
-    //     return previousState+1
-    // });
-    // setCounter(counter+1);
-    // setCounter(counter+1);
-    // setCounter(counter+1);
+    
   };
   return (
     <div>
