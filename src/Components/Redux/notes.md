@@ -152,3 +152,27 @@ TaskList<ul>
     TaskItem<li>
 </ul>
 ```
+
+## Exercise 2
+
+Create a Post blog using Redux.
+
+- User must be able to see all the posts.
+- User must be able to post new post.
+- User must be able to delete existing post.
+- User must be able to edit existing post.
+
+```
+Blog Posts<h1>
+
+<form>
+    Title<input>
+    Body<textarea>
+    Submit<button>
+</form>
+PostFeed<section>
+    Post<article>
+      title<h2>
+      body<p>
+</section>
+```
