@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from './features/posts/postsSlice';
+import Post from './Post';
 
 export default function PostFeed() {
   const { list } = useSelector((state) => state.posts);
@@ -9,15 +10,12 @@ export default function PostFeed() {
     dispatch(fetchPosts());
   }, [dispatch]);
   console.log('list', list);
+
   return (
     <section>
       <h2>Post Feed</h2>
       {list.map((post) => (
-        <article key={post.id}>
-          <button>X</button>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-        </article>
+        <Post post={post} />
       ))}
       <article>
         <h3>Title</h3>

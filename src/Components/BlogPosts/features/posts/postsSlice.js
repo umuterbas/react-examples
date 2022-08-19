@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { addDecorator } from '@storybook/react';
 
 import postsService from './postsService';
 
@@ -17,6 +16,20 @@ export const postAPost = createAsyncThunk(
   }
 );
 
+export const removePost = createAsyncThunk(
+  'posts/removePost',
+  async (id, thunkAPI) => {
+    return await postsService.delete(id);
+  }
+);
+
+export const updatePost = createAsyncThunk(
+  'posts/updatePost',
+  async (post, thunkAPI) => {
+    return await postsService.update(post);
+  }
+);
+
 export const postsSlice = createSlice({
   name: 'posts',
   initialState: {
@@ -30,6 +43,19 @@ export const postsSlice = createSlice({
       })
       .addCase(postAPost.fulfilled, (state, action) => {
         state.list.push(action.payload);
+      })
+      .addCase(removePost.fulfilled, (state, action) => {
+        console.log('payload', action.payload);
+        state.list = state.list.filter((post) => post.id !== action.payload);
+      })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        console.log('payload', action.payload);
+        state.list = state.list.map((post) => {
+          if (post.id === action.payload.id) {
+            return action.payload;
+          }
+          return post;
+        });
       });
   },
 });
