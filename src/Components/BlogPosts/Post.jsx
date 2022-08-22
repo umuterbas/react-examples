@@ -1,5 +1,10 @@
 import React from 'react';
-import { removePost, updatePost } from './features/posts/postsSlice';
+import {
+  removePost,
+  removePostFromFirebase,
+  updatePost,
+  updatePostInFirebase,
+} from './features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
@@ -10,12 +15,12 @@ export default function Post(props) {
   const [body, setBody] = useState(props.post.body);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
-    dispatch(removePost(id));
+    dispatch(removePostFromFirebase(id));
   };
   const handleEdit = () => {
     if (isEditing) {
       const updatedPost = { ...post, title, body };
-      dispatch(updatePost(updatedPost));
+      dispatch(updatePostInFirebase(updatedPost));
     }
     setIsEditing(!isEditing);
   };

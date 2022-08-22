@@ -9,6 +9,20 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
+export const fetchPostsFromFirebase = createAsyncThunk(
+  'posts/fetchPostsFromFirebase',
+  async (thunkAPI) => {
+    return await postsService.getFromFirebase();
+  }
+);
+
+export const postAPostToFirebase = createAsyncThunk(
+  'posts/postAPostToFirebase',
+  async (post, thunkAPI) => {
+    return await postsService.postToFirebase(post);
+  }
+);
+
 export const postAPost = createAsyncThunk(
   'posts/postAPost',
   async (post, thunkAPI) => {
@@ -22,11 +36,24 @@ export const removePost = createAsyncThunk(
     return await postsService.delete(id);
   }
 );
+export const removePostFromFirebase = createAsyncThunk(
+  'posts/removePostFromFirebase',
+  async (id, thunkAPI) => {
+    return await postsService.deleteFromFirebase(id);
+  }
+);
 
 export const updatePost = createAsyncThunk(
   'posts/updatePost',
   async (post, thunkAPI) => {
     return await postsService.update(post);
+  }
+);
+
+export const updatePostInFirebase = createAsyncThunk(
+  'posts/updatePostInFirebase',
+  async (post, thunkAPI) => {
+    return await postsService.updateInFirebase(post);
   }
 );
 
@@ -41,7 +68,13 @@ export const postsSlice = createSlice({
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.list = action.payload;
       })
+      .addCase(fetchPostsFromFirebase.fulfilled, (state, action) => {
+        state.list = action.payload;
+      })
       .addCase(postAPost.fulfilled, (state, action) => {
+        state.list.push(action.payload);
+      })
+      .addCase(postAPostToFirebase.fulfilled, (state, action) => {
         state.list.push(action.payload);
       })
       .addCase(removePost.fulfilled, (state, action) => {
@@ -49,6 +82,15 @@ export const postsSlice = createSlice({
         state.list = state.list.filter((post) => post.id !== action.payload);
       })
       .addCase(updatePost.fulfilled, (state, action) => {
+        console.log('payload', action.payload);
+        state.list = state.list.map((post) => {
+          if (post.id === action.payload.id) {
+            return action.payload;
+          }
+          return post;
+        });
+      })
+      .addCase(updatePostInFirebase.fulfilled, (state, action) => {
         console.log('payload', action.payload);
         state.list = state.list.map((post) => {
           if (post.id === action.payload.id) {

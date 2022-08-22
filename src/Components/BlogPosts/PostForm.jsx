@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postAPost } from './features/posts/postsSlice';
+import { postAPostToFirebase } from './features/posts/postsSlice';
 
 export default function PostForm() {
   const titleRef = useRef(null);
@@ -15,7 +15,7 @@ export default function PostForm() {
       title: titleRef.current.value,
       body: bodyRef.current.value,
     };
-    dispatch(postAPost(newPost));
+    dispatch(postAPostToFirebase(newPost));
   };
 
   return (
