@@ -1,17 +1,18 @@
-import React, { useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { postAPostToFirebase } from './features/posts/postsSlice';
 
 export default function PostForm() {
   const titleRef = useRef(null);
   const bodyRef = useRef(null);
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.user.info.id);
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('title', titleRef.current.value);
     console.log('body', bodyRef.current.value);
     const newPost = {
-      userId: 1,
+      userId,
       title: titleRef.current.value,
       body: bodyRef.current.value,
     };
