@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchPosts,
-  fetchPostsFromFirebase,
-} from './features/posts/postsSlice';
+import { fetchPostsFromFirebase } from './features/posts/postsSlice';
 import Post from './Post';
-import { database } from './firebase-config';
 
 // const postsCollectionRef = database('posts');
 
 export default function PostFeed() {
   const { list } = useSelector((state) => state.posts);
+  const userId = useSelector((state) => state.user.info.id);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPostsFromFirebase());
-  }, [dispatch]);
+    dispatch(fetchPostsFromFirebase(userId));
+  }, [dispatch, userId]);
   console.log('list', list);
 
   return (
@@ -23,10 +20,6 @@ export default function PostFeed() {
       {list.map((post, index) => (
         <Post post={post} index={index} />
       ))}
-      <article>
-        <h3>Title</h3>
-        <p>Body</p>
-      </article>
     </section>
   );
 }

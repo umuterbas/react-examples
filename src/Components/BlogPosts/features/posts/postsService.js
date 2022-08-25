@@ -6,6 +6,8 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  query,
+  where,
 } from 'firebase/firestore';
 
 import { database } from '../../firebase-config';
@@ -19,16 +21,19 @@ const postsService = {
     );
     return response.data;
   },
-  getFromFirebase: async () => {
+  getFromFirebase: async (userId) => {
     try {
-      console.log('here');
-      const response = await getDocs(postsCollectionRef);
-      const parseDocs = response.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      console.log(parseDocs);
-      return parseDocs;
+      if (userId) {
+        const q = query(postsCollectionRef, where('userId', '==', userId));
+        const response = await getDocs(q);
+        const parseDocs = response.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        console.log(parseDocs);
+        return parseDocs;
+      }
+      return [];
     } catch (error) {
       console.log('error', error);
     }

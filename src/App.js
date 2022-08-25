@@ -15,6 +15,7 @@ import BlogPosts from './Components/BlogPosts/BlogPosts';
 import AppTodo from './Components/TodoRedux/AppTodo';
 import Todo from './Components/TodoRedux/Todo';
 import store from './Components/BlogPosts/app/store';
+import BlogApp from './Components/BlogPosts/BlogApp';
 function App() {
   return (
     <div className='App'>
@@ -31,7 +32,8 @@ function App() {
         {/* <Redux /> */}
         {/* <Todo /> */}
         {/* <AppTodo /> */}
-        <BlogPosts />
+        {/* <BlogPosts /> */}
+        <BlogApp />
       </Provider>
     </div>
   );

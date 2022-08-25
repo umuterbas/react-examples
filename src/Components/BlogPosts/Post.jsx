@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  removePost,
   removePostFromFirebase,
-  updatePost,
   updatePostInFirebase,
 } from './features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
