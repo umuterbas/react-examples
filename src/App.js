@@ -12,7 +12,8 @@ import Buttons from './Components/Buttons/Buttons';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
 // import Reducer from './Components/Reducer/Reducer';
 // import store from './Components/TodoRedux/app/store';
-// import Todo from './Components/TodoRedux/Todo';
+import AppTodo from './Components/TodoRedux/AppTodo';
+import Todo from './Components/TodoRedux/Todo';
 import store from './Components/BlogPosts/app/store';
 function App() {
   return (
@@ -27,9 +28,12 @@ function App() {
       {/* <Quiz /> */}
       {/* <CustomHook /> */}
 
-
-      {/* <Redux /> */}
-
+      <Provider store={store}>
+        {/* <Redux /> */}
+        {/* <Todo /> */}
+        {/* <AppTodo /> */}
+        <BlogPosts />
+      </Provider>
 
     </div>
   );
